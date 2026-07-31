@@ -198,7 +198,7 @@ section { position: relative; }
 /* =========================================================
    ROOMS (cards)
    ========================================================= */
-#rooms { background: var(--cream); padding: 7rem 3.5rem 5rem; }
+#rooms { background: var(--cream); padding: 9rem 3.5rem 5rem; }
 
 .rooms-intro { max-width: 560px; margin-bottom: 3.5rem; }
 .rooms-intro p { font-size: 0.9rem; line-height: 1.9; color: var(--carbon); margin-top: 1.2rem; }
@@ -236,7 +236,7 @@ section { position: relative; }
 /* =========================================================
    GALLERY — mosaic with flex-wrap
    ========================================================= */
-#gallery { background: var(--black); padding: 7rem 3.5rem; }
+#gallery { background: var(--black); padding: 9rem 3.5rem 7rem; }
 #gallery .section-title { color: var(--white); }
 
 .gallery-intro { max-width: 560px; margin-bottom: 3rem; }
@@ -267,7 +267,7 @@ section { position: relative; }
    ========================================================= */
 #restaurant {
   background: var(--white);
-  padding: 7rem 3.5rem;
+  padding: 9rem 3.5rem 7rem;
   display: flex;
   flex-wrap: wrap;
   gap: 4rem;
@@ -295,7 +295,7 @@ section { position: relative; }
    ========================================================= */
 #contact {
   background: var(--cream);
-  padding: 7rem 3.5rem;
+  padding: 9rem 3.5rem 7rem;
   display: flex;
   flex-wrap: wrap;
   gap: 4rem;
@@ -392,11 +392,12 @@ footer {
   .hero-text { padding: 7rem 1.5rem 5rem; max-width: 100%; }
   .hero-visual::after { background: rgba(10,10,10,0.72); }
 
-  #rooms, #gallery, #restaurant, #contact { padding: 4rem 1.5rem; }
+  /* Extra top padding so the fixed nav never overlaps the section title */
+  #rooms, #gallery, #restaurant, #contact { padding: 6.5rem 1.5rem 4rem; }
 
   .gallery-item { flex: 1 1 45%; }
 
-  footer { flex-direction: column; text-align: center; }
+  footer { flex-direction: column; text-align: center; padding: 2.5rem 1.5rem; }
 }
 
 @media (min-width: 1024px) {
