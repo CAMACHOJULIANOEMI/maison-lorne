@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservations — Maison Lorne</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header>
+    <!-- ============ NAV ============ -->
+    <nav class="dark">
+      <a class="nav-logo" href="index.html">Maison Lorne</a>
+      <ul class="nav-links">
+        <li><a href="rooms.html"><i class="bi bi-door-open"></i><span>Rooms</span></a></li>
+        <li><a href="gallery.html"><i class="bi bi-images"></i><span>Gallery</span></a></li>
+        <li><a href="dining.html"><i class="bi bi-cup-hot"></i><span>Dining</span></a></li>
+        <li><a href="contact.html"><i class="bi bi-envelope"></i><span>Reservations</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ CONTACT / FORM ============ -->
+    <section id="contact">
+      <div class="contact-text">
+        <p class="section-label">Reservations</p>
+        <h2 class="section-title">Stay with us.<br><em>We'll take care of the rest.</em></h2>
+        <p>Reservations are personal. We don't use an automated system — a member of our team will confirm your stay within the hour.</p>
+        <ul class="contact-details">
+          <li><i class="bi bi-geo-alt-fill"></i><span><strong>Address</strong>14 Moray Place, Edinburgh EH3 6DT</span></li>
+          <li><i class="bi bi-telephone-fill"></i><span><strong>Phone</strong>+44 131 226 0001</span></li>
+          <li><i class="bi bi-envelope-fill"></i><span><strong>Email</strong>stay@maisonlorne.co.uk</span></li>
+          <li><i class="bi bi-clock-fill"></i><span><strong>Check-in / Check-out</strong>3:00 pm — 11:00 am</span></li>
+        </ul>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <form class="contact-form" id="reservationForm">
+          <div class="form-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="you@email.com" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 555 000 0000" pattern="[0-9+ ]*" />
+            </div>
+            <div class="field">
+              <label for="reason">Reason for contact</label>
+              <select id="reason" name="reason">
+                <option value="">Choose an option...</option>
+                <option value="room">Room reservation</option>
+                <option value="event">Private event</option>
+                <option value="restaurant">Table reservation</option>
+                <option value="other">Other enquiry</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="choice-group">
+            <span class="group-label">How should we contact you?</span>
+            <div class="choice-options">
+              <label><input type="radio" name="preferred-contact" value="email" checked /> Email</label>
+              <label><input type="radio" name="preferred-contact" value="phone" /> Phone</label>
+              <label><input type="radio" name="preferred-contact" value="whatsapp" /> WhatsApp</label>
+            </div>
+          </div>
+
+          <div class="choice-group">
+            <span class="group-label">Services of interest</span>
+            <div class="choice-options">
+              <label><input type="checkbox" name="services" value="spa" /> Spa</label>
+              <label><input type="checkbox" name="services" value="dinner" /> Tasting dinner</label>
+              <label><input type="checkbox" name="services" value="transfer" /> Airport transfer</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Notes or special requests</label>
+            <textarea id="message" name="message" placeholder="Dietary requirements, special occasions, preferences..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn filled">Send enquiry</button>
+            <button type="reset" class="btn ghost">Clear form</button>
+          </div>
+        </form>
+
+        <div class="form-success" id="formSuccess" hidden>
+          <i class="bi bi-check-circle"></i>
+          <h3>Thank you!</h3>
+          <p>We've received your enquiry and will get back to you within the hour.</p>
+          <button type="button" class="btn" id="sendAnother">Send another enquiry</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <span class="footer-logo">Maison Lorne</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="rooms.html">Rooms</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Reservations</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 Maison Lorne. Edinburgh, Scotland.</p>
+  </footer>
+
+  <script>
+    // Show a confirmation message instead of actually submitting the form
+    const form = document.getElementById('reservationForm');
+    const successMessage = document.getElementById('formSuccess');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      form.hidden = true;
+      successMessage.hidden = false;
+    });
+
+    document.getElementById('sendAnother').addEventListener('click', () => {
+      form.reset();
+      form.hidden = false;
+      successMessage.hidden = true;
+    });
+  </script>
+
+</body>
+</html>
